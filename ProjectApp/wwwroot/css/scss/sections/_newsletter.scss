@@ -1,0 +1,115 @@
+#newsletter {
+    background: $gray-100;
+  
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        
+        .title {
+            display: flex;
+     
+            h1 {
+                padding-top: 96px;
+                padding-left: 250px;
+                padding-bottom: 25px;
+            }
+            img {
+                padding-top: 96px;
+                padding-left: 15px;
+                width: auto;
+            }
+        }
+
+
+        .variables{
+           // padding-left:250px;
+            display:flex;
+            justify-content:center;
+            .letter {
+                h5 { @include h5; 
+                  //  text-align:left;
+                   // margin-left:100px;
+                
+                }
+            }
+            .radios {
+                display: grid;
+                grid-template-columns: repeat(6, 1fr);
+                grid-template-rows: repeat(2, 1fr);
+                padding:10px ;
+
+                input[type="checkbox"] {
+                    transform: scale(0.75);
+                    border: 2px solid red;
+                }
+                /* Hide the browser's default checkbox */
+input[type="checkbox"] {
+   visibility: hidden;
+}
+
+input[type="checkbox"] + label:before {
+   content: "";
+    transform: scale(0.75);
+    border: 3px solid $gray-500;
+    border-radius:3px;
+    display:inline-block;
+    width: 24px;
+    height: 24px;
+
+}
+
+/* Change the background color when the checkbox is checked */
+input[type="checkbox"]:checked + label:before {
+    background-color:$theme;
+    transform: scale(0.75);
+    border: 5px solid $gray-500;
+    display: inline-block;
+     width: 24px;
+    height: 24px;
+}
+
+                
+            }
+        }
+        .news {
+            padding:30px;
+            display: flex;
+           // justify-content: space-between;
+           // align-items: center;
+          
+
+
+
+
+           
+            form {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+            
+                input{
+                        color:#191919;
+                        text-decoration: none;
+                        padding: 17px 300px;
+                        font-size: 16px;
+                        border-radius: 15px;
+                        outline:none;
+                        border: 1px solid #1919191a; 
+                        margin-right: 20px;
+                        margin-left:50px;
+                    }
+                    
+                .btn-theme{
+                    padding:17px 25px;
+                }
+            
+
+
+              
+            }
+        }
+    }
+}

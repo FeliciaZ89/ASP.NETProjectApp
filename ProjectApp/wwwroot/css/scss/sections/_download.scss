@@ -1,0 +1,123 @@
+#download{ 
+ 
+    background: $gray-100; 
+
+    .container{ 
+        background: $gray-200; 
+        display:flex;
+        justify-content: space-between;
+        gap:180px;
+
+
+        .image{
+
+           
+            display:none;
+
+            @include xl{
+                display:block;
+                 padding: 56px 0 56px 130px;
+                 
+                 img{
+                    width:100%;
+                     height:100%;
+                      object-fit: cover;
+                 }
+
+            }
+
+         }
+
+        .devices{ 
+
+            display: grid; 
+            grid-template-areas:  
+            "title title" 
+            "app_store image1" 
+            "google_play image2"; 
+            grid-template-columns: 1fr 1fr; 
+
+              
+            h1 { 
+             grid-area: title;  
+             padding-top:122px; 
+             @include h2; 
+             @include lg{ 
+                 @include h1; 
+ 
+             } 
+            } 
+
+            .app_store {  
+              grid-area: app_store; 
+              p{
+                @include text-m;
+
+                @include lg{
+               
+                    @include text-lg;
+
+                }
+                @include xl{
+                    @include text-lg;
+                }
+                margin-bottom: 2px;
+                
+               } 
+
+               img{ 
+                margin-top: 2px;
+               }
+
+            
+                h4{ 
+               @include h4;
+               }
+
+            }
+
+            .image1 {
+                display:none;
+             @include sm{
+             display:block;
+             grid-area: image1;
+             padding-top:65px;}
+             }
+
+            .google_play {
+              grid-area: google_play;
+                 p{@include text-m;
+
+                    @include lg{
+                   
+                        @include text-lg;
+    
+                    }
+                    @include xl{
+                        @include text-lg;
+                    }
+                    margin-bottom:2px;
+               
+                } 
+                
+                img{
+                    margin-top:2px;
+                }
+        
+                 h4 {@include h4};   
+
+                 
+
+            }
+            .image2 {
+             display:none;
+
+             @include sm{ 
+             display:block; 
+             grid-area: image2;  
+             padding-top:65px;} 
+            } 
+        } 
+ 
+    } 
+}
