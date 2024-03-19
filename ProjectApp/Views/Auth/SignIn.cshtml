@@ -5,13 +5,13 @@
 
 <section id="signin">
     <div class="container">
-        <form method="post" asp-controller="Account" asp-action="SignIn" novalidate>
+        <form method="post" asp-controller="Auth" asp-action="SignIn" novalidate>
             <div>
                 @Model.ErrorMessage
             </div>
 
             <h1>Welcome Back</h1>
-            <p>Don't have an account yet?<a asp-controller="Account" asp-action="SignUp"> Sign up here</a>.</p>
+            <p>Don't have an account yet?<a asp-controller="Auth" asp-action="SignUp"> Sign up here</a>.</p>
             <div class="content">
                
                 <div id="form-email" class="input-group">
@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <button id="form-button" class="btn-theme-s" type="submit">@Model.Title</button>
-                <a id="form-forgot-password" asp-controller="Account" asp-action="Forgot">Forgot your password?</a>
+                <a id="form-forgot-password" asp-controller="Auth" asp-action="Forgot">Forgot your password?</a>
             </div>
 
            
