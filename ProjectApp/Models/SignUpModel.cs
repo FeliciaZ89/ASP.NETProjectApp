@@ -6,11 +6,12 @@ namespace ProjectApp.Models;
 
 public class SignUpModel
 {
+    [DataType(DataType.Text)]
     [Display(Name = "First Name", Prompt = "Enter your first name", Order = 0)]
     [Required(ErrorMessage = "First name is required")]
     public string FirstName { get; set; } = null!;
 
-
+    [DataType(DataType.Text)]
     [Display(Name = "Last Name", Prompt = "Enter your last name", Order = 1)]
     [Required(ErrorMessage = "Last name is required")]
     public string LastName { get; set; } = null!;
@@ -29,16 +30,15 @@ public class SignUpModel
     public string Password { get; set; } = null!;
 
 
-
-    [Display(Name = "Confirm password", Prompt = "Confirm your password", Order = 4)]
     [DataType(DataType.Password)]
+    [Display(Name = "Confirm password", Prompt = "Confirm your password", Order = 4)]
     [Required(ErrorMessage = "Password must be confirmed")]
-    [Compare(nameof(Password),ErrorMessage ="Fields don't match")]
+    [Compare(nameof(Password), ErrorMessage = "Fields don't match")]
     public string ConfirmPassword { get; set; } = null!;
 
 
     [Display(Name = "I agree to the Terms & Conditions.", Order = 5)]
-    //[Required(ErrorMessage = "You have to accept our terms and conditions")]
+    [Required(ErrorMessage = "You have to accept our terms and conditions")]
     [CheckBoxRequired(ErrorMessage="You must accept the terms and conditions to proceed")]
     public bool TermsAndConditions { get; set; } = false;
 

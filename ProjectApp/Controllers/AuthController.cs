@@ -50,7 +50,7 @@ namespace ProjectApp.Controllers
 
             //var result=_accountService.SignIn(viewModel.Form);
             //if(result)
-            //  return RedirectToAction("Account", "Index");
+            //  return RedirectToAction("Account", "Details");
 
             viewModel.ErrorMessage = "Incorrect email address or password";
             return View(viewModel);
@@ -58,8 +58,6 @@ namespace ProjectApp.Controllers
           
 
         }
-
-
 
 
         public new IActionResult SignOut()
