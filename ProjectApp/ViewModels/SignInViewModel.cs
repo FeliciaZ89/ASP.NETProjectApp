@@ -1,4 +1,5 @@
-﻿using ProjectApp.Models;
+﻿using Infrastructure.Models;
+using ProjectApp.Models;
 
 namespace ProjectApp.ViewModels;
 

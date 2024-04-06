@@ -1,14 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿
+using System.ComponentModel.DataAnnotations;
 
-namespace ProjectApp.Models;
+namespace Infrastructure.Models;
 
 public class SignInModel
 {
-
     [Display(Name = "Email address", Prompt = "Enter your email address", Order = 0)]
     [DataType(DataType.EmailAddress)]
     [Required(ErrorMessage = "Email address is required")]
-   
+
     public string Email { get; set; } = null!;
 
     [Display(Name = "Password", Prompt = "Enter your password", Order = 1)]
@@ -20,4 +20,3 @@ public class SignInModel
     [Display(Name = "Remember me", Order = 2)]
     public bool RememberMe { get; set; }
 }
-
