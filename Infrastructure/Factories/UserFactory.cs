@@ -2,6 +2,7 @@
 using Infrastructure.Entities;
 using Infrastructure.Helpers;
 using Infrastructure.Models;
+using System.Diagnostics;
 
 namespace Infrastructure.Factories;
 
@@ -14,13 +15,14 @@ public class UserFactory
         {
             var date = DateTime.Now;
             return new UserEntity()
+
             {
                 Id = Guid.NewGuid().ToString(),
                 Created = date,
-                Modified= date
+                Modified = date
             };
         }
-        catch { }
+        catch (Exception ex) { Debug.WriteLine("ERROR :: " + ex.Message); }
         return null!;
     }
 
@@ -29,23 +31,22 @@ public class UserFactory
         try
         {
             var date = DateTime.Now;
-            var (password, securityKey) = PasswordHasher.GenerateSecurePassword(model.Password);
 
 
             return new UserEntity
-            {   Id=Guid.NewGuid().ToString(),
+            {
+                Id = Guid.NewGuid().ToString(),
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Email = model.Email,
-                Password=password,
-                SecurityKey=securityKey,
+                PasswordHash = model.Password,
                 Created = date,
                 Modified = date
             };
         }
-        catch { }
+        catch (Exception ex) { Debug.WriteLine("ERROR :: " + ex.Message); }
         return null!;
     }
 
-   
+
 }

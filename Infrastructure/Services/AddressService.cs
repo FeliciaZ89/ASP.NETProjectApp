@@ -15,7 +15,7 @@ public class AddressService(AddressRepository repository)
         try
         {
             var result = await GetAddressAsync(streetName, postalCode, city);
-            if(result.StatusCode== StatusCodes.NOT_FOUND)
+            if(result.StatusCode== StatusCode.NOT_FOUND)
             result= await CreateAddressAsync(streetName, postalCode, city);
             return result;
         }
@@ -31,11 +31,11 @@ public class AddressService(AddressRepository repository)
     public async Task<ResponseResult> CreateAddressAsync(string streetName, string postalCode, string city)
     {
         try 
-        { var exists= await _repository.AlreadyExistsAsync(x => x.StreetNsme == streetName && x.PostalCode == postalCode && x.City == city);
+        { var exists= await _repository.AlreadyExistsAsync(x => x.Addressline_1 == streetName && x.PostalCode == postalCode && x.City == city);
             if (exists == null)
             {
                 var result = await _repository.CreateOneAsync(AddressFactory.Create(streetName, postalCode,city));
-                if (result.StatusCode == StatusCodes.OK) 
+                if (result.StatusCode == StatusCode.OK) 
                  return ResponseFactory.OK(AddressFactory.Create((AddressEntity)result.ContentResult!));
                 return result;
             }
@@ -51,7 +51,7 @@ public class AddressService(AddressRepository repository)
     {
         try
         {
-            var result = await _repository.GetOneAsync(x => x.StreetNsme == streetName && x.PostalCode == postalCode && x.City == city);
+            var result = await _repository.GetOneAsync(x => x.Addressline_1 == streetName && x.PostalCode == postalCode && x.City == city);
             return result;
         }
         catch (Exception ex)

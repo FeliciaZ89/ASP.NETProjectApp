@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ProjectApp.ViewModels;
 
-namespace ProjectApp.Controllers;
-
+[Authorize]
 public class AccountController : Controller
 
 {
@@ -13,8 +13,9 @@ public class AccountController : Controller
     //{
     //    _accountService = accountService;
     //}
-    [Route("/account")]
-    public IActionResult Details ()
+  
+    [Route("/account/details")]
+    public IActionResult Details()
     {
 
         var viewModel = new AccountDetailsViewModel();
@@ -24,7 +25,7 @@ public class AccountController : Controller
     }
 
     [HttpPost]
-    public IActionResult BasicInfo (AccountDetailsViewModel viewModel)
+    public IActionResult BasicInfo(AccountDetailsViewModel viewModel)
     {
         //_accountService.SaveBasicInfo(viewModel.BasicInfo);
         return RedirectToAction(nameof(Details));
@@ -39,4 +40,3 @@ public class AccountController : Controller
     }
 }
 
- 

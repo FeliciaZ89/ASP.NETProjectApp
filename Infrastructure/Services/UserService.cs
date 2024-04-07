@@ -4,6 +4,7 @@ using Infrastructure.Factories;
 using Infrastructure.Helpers;
 using Infrastructure.Models;
 using Infrastructure.Repositories;
+using Microsoft.AspNetCore.Http;
 
 namespace Infrastructure.Services;
 
@@ -16,15 +17,18 @@ public class UserService(UserRepository repository, AddressService addressServic
     {
         try
         {
-            var exists = await _repository.AlreadyExistsAsync(x => x.Email ==model.Email);
-            if (exists.StatusCode == StatusCodes.EXISTS)
-                return exists;
-            
-            var result = await _repository.CreateOneAsync(UserFactory.Create(model)); 
-            if(result.StatusCode != StatusCodes.OK)
+            var exist = await _repository.AlreadyExistsAsync(x => x.Email == model.Email);
+            if (exist.StatusCode == StatusCode.EXISTS)
+                return exist;
+
+            var result = await _repository.CreateOneAsync(UserFactory.Create(model));
+            if (result.StatusCode != StatusCode.OK)
                 return result;
 
-            return ResponseFactory.OK("User succesfully created!");
+            return ResponseFactory.OK("User was crated succssfully.");
+
+
+
         }
         catch (Exception ex)
         {
@@ -32,16 +36,15 @@ public class UserService(UserRepository repository, AddressService addressServic
         }
     }
 
-
     public async Task<ResponseResult> SignInUserAsync(SignInModel model)
     {
         try
         {
             var result = await _repository.GetOneAsync(x => x.Email == model.Email);
-            if (result.StatusCode == StatusCodes.OK && result.ContentResult != null)
+            if (result.StatusCode == StatusCode.OK && result.ContentResult != null)
             {
-                var userEntity = (UserEntity) result.ContentResult;
-                if (PasswordHasher.ValidateSecurePassword(model.Password, userEntity.Password, userEntity.SecurityKey))
+                var userEntity = (UserEntity)result.ContentResult;
+                if ((model.Password == userEntity.PasswordHash))
                     return ResponseFactory.OK();
             }
 

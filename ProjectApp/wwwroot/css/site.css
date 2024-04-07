@@ -506,6 +506,15 @@ form span.field-validation-error::after {
   content: "⮿";
 }
 
+.alert {
+  background: #EF4444;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  border-radius: 8px;
+}
+
 header {
   padding: 15px 0;
 }
@@ -1334,7 +1343,7 @@ footer .container .social-media {
   align-items: center;
   height: 100%;
 }
-@inlcude lg {
+@media (min-width: 992px) {
   #signin .container {
     width: 60%;
   }

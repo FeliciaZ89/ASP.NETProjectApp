@@ -11,19 +11,15 @@ public class PasswordHasher
     {
         using var hmac = new HMACSHA512();
         var securityKey = hmac.Key;
-        var hashedPassword= hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
+        var hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
 
-        return (Convert.ToBase64String(securityKey), Convert.ToBase64String(hashedPassword));
+        return (Convert.ToBase64String(hash), Convert.ToBase64String(securityKey));
     }
 
-    public static bool ValidateSecurePassword( string password,string hash, string securityKey)
+    public static bool ValidateSecurePassword(string password, string hash, string securityKey)
     {
-        var security = Convert.FromBase64String(securityKey);
-        var pwd=Convert.FromBase64String(hash);
-
-        using var hmac = new HMACSHA512(security);
+        using var hmac = new HMACSHA512(Convert.FromBase64String(securityKey));
         var hashedPassword = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
-
 
         var userPassword = Convert.FromBase64String(hash);
 

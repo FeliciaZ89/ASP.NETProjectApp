@@ -25,7 +25,7 @@ namespace ProjectApp.Controllers
             if (ModelState.IsValid)
             {
                 var result = await _userService.CreateUserAsync(viewModel.Form);
-                if (result.StatusCode == Infrastructure.Models.StatusCodes.OK)
+                if (result.StatusCode == Infrastructure.Models.StatusCode.OK)
                     return RedirectToAction("SignIn", "Auth");
 
             }
@@ -54,7 +54,7 @@ namespace ProjectApp.Controllers
 
             {
                 var result = await _userService.SignInUserAsync(viewModel.Form);
-                if (result.StatusCode == Infrastructure.Models.StatusCodes.OK)
+                if (result.StatusCode == Infrastructure.Models.StatusCode.OK)
 
 
                     //var result=_accountService.SignIn(viewModel.Form);
