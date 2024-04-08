@@ -1,13 +1,13 @@
-﻿
+﻿@using ProjectApp.Models.Views
+
 @{
     ViewData["Title"] = "Overview";
 
 
 }
-@* @model HomeIndexViewModel *@
-@* 
+@model HomeIndexViewModel
 
-@await Html.PartialAsync("~/Views/Shared/Sections/_Showcase.cshtml", Model.Showcase) *@
+@await Html.PartialAsync("~/Views/Shared/Sections/_Showcase.cshtml", Model.Showcase)
 
 @await Html.PartialAsync("~/Views/Shared/Sections/_Features.cshtml")
 
