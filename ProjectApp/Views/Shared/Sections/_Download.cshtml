@@ -1,0 +1,29 @@
+﻿@model DownloadViewModel
+
+<section id="@Model.Id" class="download">
+    <div class="container">
+        <div class="image">
+            <img src="@Model.DownloadImage.ImageUrl" alt="@Model.DownloadImage.AltText">
+        </div>
+        <div class="devices">
+            <h1>@Model.Title</h1>
+            @if (Model.Stores != null)
+            {
+                foreach (var store in Model.Stores)
+                {
+                    <div class="store">
+                        <p>@store.Name</p>
+                        <img src="@store.RatingImage.ImageUrl" alt="@store.RatingImage.AltText">
+                        <h4>@store.Highlight</h4>
+                        <p>@store.Rating, @store.Reviews reviews</p>
+                    </div>
+                    <div class="store_logo">
+                        <a href="@store.StoreLink.Url" target="_blank">
+                            <img src="@store.StoreLogo.ImageUrl" alt="@store.StoreLogo.AltText">
+                        </a>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>

@@ -1,0 +1,32 @@
+﻿@inject LightDarkSliderService _sliderService
+@{
+    var result = await _sliderService.GetAllSliderAsync();
+    List<LightDarkSliderEntity> content = (List<LightDarkSliderEntity>)result.ContentResult!;
+    var slider = content.First();
+
+}
+
+
+
+@if (content != null)
+    {
+    <section id="dark-light">
+        <div class="background">
+            <div class="dark-mode"></div>
+            <div class="light-mode"></div>
+        </div>
+
+        <div class="container">
+            <div class="title">
+                <h3 class="light">@slider.TitleDark</h3>
+                <h3 >@slider.TitleLight</h3>
+            </div>
+
+            <img class="laptop" src="images/@slider.Image" alt="@slider.AltText" />
+        </div>
+    </section>
+  
+
+
+    }
+

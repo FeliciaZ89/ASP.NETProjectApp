@@ -2,10 +2,10 @@
 @{
     var result = await _featureService.GetAllFeaturesAsync();
     List<FeatureEntity> content = (List<FeatureEntity>)result.ContentResult!;
-    var feature = content.First();
+    var feature = content.FirstOrDefault();
 }
 
-@if (content != null)
+@if (feature != null)
 {
     <div class="features">
         <div class="container">
@@ -24,5 +24,4 @@
             </div>
         </div>
     </div>
-
 }

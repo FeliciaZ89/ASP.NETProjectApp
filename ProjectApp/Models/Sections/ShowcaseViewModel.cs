@@ -8,7 +8,7 @@ namespace ProjectApp.Models.Sections
   
         public string? Title { get; set; }
         public string? Text { get; set; }
-        public LinkViewModel Link { get; set; } = new LinkViewModel();//skapar en instans
+        public LinkViewModel Link { get; set; } = new LinkViewModel();
         public string? BrandsText { get; set; }
         
         public List<ImageViewModel>? Brands { get; set; }

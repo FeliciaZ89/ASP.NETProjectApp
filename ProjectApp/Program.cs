@@ -24,10 +24,15 @@ builder.Services.AddScoped<AddressRepository>();
 builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<FeatureRepository>();
 builder.Services.AddScoped<FeatureItemRepository>();
+builder.Services.AddScoped<LightDarkSliderRepository>();
+builder.Services.AddScoped<ToolsRepository>();
+builder.Services.AddScoped<ToolsItemRepository>();
 
 builder.Services.AddScoped<AddressService>();
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<FeatureService>();
+builder.Services.AddScoped<LightDarkSliderService>();
+builder.Services.AddScoped<ToolsService>();
 
 builder.Services.AddAuthentication("AuthCookie").AddCookie("AuthCookie", x =>
 {

@@ -66,6 +66,23 @@ public abstract class Repo<Tentity>(DataContext context) where Tentity:class
 
     }
 
+    //public virtual async Task<ResponseResult> GetByIdAsync(int id)
+    //{
+    //    try
+    //    {
+    //        var result = await _context.Set<Tentity>().FindAsync(id);
+    //        if (result == null)
+    //            return ResponseFactory.NOTFOUND();
+
+    //        return ResponseFactory.OK(result);
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        return ResponseFactory.ERROR(ex.Message);
+    //    }
+    //}
+
+
     //Update one
     public virtual async Task<ResponseResult> UpdateOneAsync(Expression<Func<Tentity, bool>> predicate, Tentity updatedEntity)
     {

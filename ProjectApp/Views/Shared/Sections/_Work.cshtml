@@ -1,0 +1,21 @@
+﻿@model WorkViewModel
+
+<section id="@Model.Id">
+    <div class="container">
+        <div class="image">
+            <img src="@Model.DashboardImage.ImageUrl" alt="@Model.DashboardImage.AltText">>
+        </div>
+        <div class="manage">
+            <h2>Manage your work</h2>
+            @if (Model.TextItems != null)
+            {
+                foreach (var text in Model.TextItems)
+                {
+                    <p><i class="fa-regular fa-circle-check"></i>@text</p>
+
+                }
+            }
+            <a class="btn-theme" asp-controller="@Model.Link.ControllerName" asp-action="@Model.Link.ActionName"><span>@Model.Link.Text <i class="fa-solid fa-arrow-right"></i></span></a>
+        </div>
+    </div>
+</section>
