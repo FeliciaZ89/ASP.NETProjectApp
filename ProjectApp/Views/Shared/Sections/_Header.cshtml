@@ -1,4 +1,9 @@
-﻿@{
+﻿
+@inject SignInManager<UserEntity> _signInManager
+
+
+
+@{
     var themeMode = Context.Request.Cookies["ThemeMode"] ?? "light";
     var isDark = (themeMode == "dark") ? true : false;
 }
@@ -9,8 +14,12 @@
 
         <div id="menu">
             <nav>
-                <a class="menu-link" href="#overview">Overview</a>
-                <a class="menu-link" href="#features">Features</a>
+                <a class="menu-link" asp-controller="Home" asp-action="Index" asp-fragment="overview">Overview</a>
+               
+                 @if (_signInManager.IsSignedIn(User))
+                {
+                 <a class="menu-link" asp-controller="Courses" asp-action="Index">Courses</a>
+                }
                 <a class="menu-link" asp-controller="Contact" asp-action="Index">Contact</a>
             </nav>
         </div>
@@ -25,9 +34,20 @@
         </div>
 
         <div class="account-buttons">
+             @if (_signInManager.IsSignedIn(User))
+            {
+                <a class="btn-gray" asp-controller="Auth" asp-action="SignOut"><i class="fa-solid fa-right-from-bracket"></i><span>Sign Out</span></a>
+                
+            }
+            else
+
+           { 
             <a class="btn-gray" asp-controller="Auth" asp-action="SignIn"><i class="fa-solid fa-right-to-bracket"></i><span>Sign In</span></a>
             <a class="btn-theme" asp-controller="Auth" asp-action="SignUp"><i class="fa-regular fa-user"></i><span>Sign Up</span></a>
+           }
         </div>
+
+  
 
     </div>
 </header>

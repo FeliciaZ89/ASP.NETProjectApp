@@ -14,11 +14,13 @@ public class AccountDetailsBasicInfoModel
 
     [Display(Name = "First Name", Prompt = "Enter your first name", Order = 0)]
     [Required(ErrorMessage = "First name is required")]
+    [DataType(DataType.Text)]
     public string FirstName { get; set; } = null!;
 
 
     [Display(Name = "Last Name", Prompt = "Enter your last name", Order = 1)]
     [Required(ErrorMessage = "Last name is required")]
+    [DataType(DataType.Text)]
     public string LastName { get; set; } = null!;
 
 
