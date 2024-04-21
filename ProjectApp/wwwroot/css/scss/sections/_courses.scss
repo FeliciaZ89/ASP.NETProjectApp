@@ -1,9 +1,89 @@
-#courses{
+#courses {
+    padding-top: 3rem;
+    padding-bottom: 5rem;
 
+    .container {
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
 
+            h1 {
+            }
 
+            #form-filters {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                gap: 1.5rem;
 
+                select {
+                }
 
-    
+                input {
+                }
+            }
+        }
+        .course-items{
+            display:grid;
+            grid-template-columns:1fr 1fr 1fr;
+            gap:2rem;
+
+            .course{
+                position:relative;
+                display:block;
+                border-radius:8px;
+                overflow:hidden;
+                text-decoration:none;
+                box-shadow:0 0 14px -4px $gray-500;
+                color:$gray-700;
+
+                &:hover{
+                    box-shadow:0 0 14px -4px $gray-900;
+                }
+
+            }
+        }
+
+        .get-started {
+            background-color: var(--color-gray-100);
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 100px;
+
+            &.dark {
+                background-color: var(--color-gray-800);
+            }
+
+            .text-box {
+                h5 {
+                    font-weight: 700;
+                    margin-bottom: 10px;
+                    width: 350px;
+                    font-size: 30px;
+
+                    span {
+                        color: $info;
+                    }
+                }
+
+                a {
+                    width: 162px;
+                    margin-top: 30px;
+                    text-align: center;
+                }
+            }
+
+            .image-box {
+                display: none;
+
+                @include lg {
+                    display: block;
+                }
+            }
+        }
+    }
 }
-

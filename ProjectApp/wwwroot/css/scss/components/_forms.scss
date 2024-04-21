@@ -1,9 +1,14 @@
 ﻿form {
     width: 100%;
     display: grid;
+    
 
     .input-group {
         display: grid;
+
+        input{
+            padding:10px;
+        }
     }
 
     .checkbox {
@@ -35,7 +40,7 @@
             input[type="checkbox"] {
                 height: 1.5rem;
                 width: 1.5rem;
-                /*border: 0.063rem solid red;*/
+           
 
                 &.input-validation-error {
                     position: relative;
