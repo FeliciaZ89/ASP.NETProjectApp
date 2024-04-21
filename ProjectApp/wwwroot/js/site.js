@@ -1,20 +1,21 @@
 ﻿
 
-    document.addEventListener('DOMContentLoaded', function () {
-        let sw = document.querySelector('#switch-mode')
 
-        sw.addEventListener('change', function () {
-            let theme = this.checked ? "dark" : "light";
-            document.body.className = theme;
+document.addEventListener('DOMContentLoaded', function () {
+    handleProfileImageUpload();
+})
 
-            fetch(`/sitesettingscontroller/changetheme?theme=${theme}`)
-                .then(res => {
-                    if (res.ok)
-                        window.location.reload()
-                    else
-                        console.log("something")
-                })
-        })
-    })
+function handleProfileImageUpload() {
+    try {
+        let fileUploder = document.querySelector('#fileUploader')
 
-
+        if (fileUploder != undefined) {
+            fileUploder.addEventListener('change', function () {
+                if (this.files.length > 0) {
+                    this.form.submit()
+                }
+            })
+        }
+    }
+    catch { }
+}

@@ -4,60 +4,63 @@
     gap: 150px;
     margin-bottom: 70px;
 
-    aside {
-        border-right: 1px solid $gray-300;
-        padding-right: 20px;
+    .container {
 
-        .profile-info {
-            margin: 20px;
-            text-align: center;
 
-            h5 {
-                margin-top: 15px;
-                margin-bottom: 0;
+        aside {
+            border-right: 1px solid $gray-300;
+            padding-right: 20px;
+
+            .profile-info {
+                margin: 20px;
+                text-align: center;
+
+                h5 {
+                    margin-top: 15px;
+                    margin-bottom: 0;
+                }
+
+                p {
+                    @include text-m;
+                }
             }
 
-            p {
-                @include text-m;
+            nav {
+                margin-top: 50px;
+                text-align: left;
+
+                a {
+                    margin: 10px 0;
+                    text-align: left;
+                    justify-content: flex-start;
+                }
+
+                .btn-theme-s {
+                    text-align: left;
+                    justify-content: flex-start;
+                }
             }
         }
 
-        nav {
+        .details {
             margin-top: 50px;
-            text-align: left;
+            width: 100%;
 
-            a {
-                margin: 10px 0;
-                text-align: left;
-                justify-content: flex-start;
-            }
-
-            .btn-theme-s {
-                text-align: left;
-                justify-content: flex-start;
-            }
-        }
-    }
-
-    .details {
-        margin-top: 50px;
-        width: 100%;
-
-        .basic-info {
+            .basic-info {
 
 
-            form {
-              padding: 1rem;
+                form {
+                    padding: 1rem;
 
-                  h5 {
-                    color: $theme;
+                    h5 {
+                        color: $theme;
                     }
 
-                  .content {
-                    display: grid;
-                    gap: 1rem 2rem;
-                    grid-template-columns: 1fr 1fr;
-                    grid-template-areas: "firstname lastname" "email phone" "bio bio " "buttons buttons";
+                    .content {
+                        display: grid;
+                        gap: 1rem 2rem;
+                        grid-template-columns: 1fr 1fr;
+                        grid-template-areas: "firstname lastname" "email phone" "bio bio " "buttons buttons";
 
                         #form-firstname {
                             grid-area: firstname;
@@ -90,58 +93,57 @@
                             display: flex;
                             gap: 20px;
                         }
-                  }
-
+                    }
+                }
             }
-        }
-    
-    
-         .address-info {
-             margin-top: 30px;
 
-              form {
-                 padding: 1rem;
 
-                 h5 {
-                    color: $theme;
-                 }
+            .address-info {
+                margin-top: 30px;
+
+                form {
+                    padding: 1rem;
+
+                    h5 {
+                        color: $theme;
+                    }
 
                     .content {
-                         display: grid;
-                         gap: 1rem 2rem;
-                         grid-template-columns: 1fr 1fr;
-                         grid-template-areas: "addressline-1 addressline-1" "addressline-2 addressline-2" "postalcode city" "buttons buttons";
+                        display: grid;
+                        gap: 1rem 2rem;
+                        grid-template-columns: 1fr 1fr;
+                        grid-template-areas: "addressline-1 addressline-1" "addressline-2 addressline-2" "postalcode city" "buttons buttons";
 
                         #form-addressline-1 {
                             grid-area: addressline-1;
-                         }
+                        }
 
                         #form-addressline-2 {
                             grid-area: addressline-2;
 
-                            span{
-                            color:$gray-500;
-                            font-weight:400;
+                            span {
+                                color: $gray-500;
+                                font-weight: 400;
                             }
                         }
 
-                         #form-postalcode{
-                             grid-area: postalcode;
-                         }
+                        #form-postalcode {
+                            grid-area: postalcode;
+                        }
 
-                         #form-city {
-                             grid-area: city;
-                         }
+                        #form-city {
+                            grid-area: city;
+                        }
 
-                         .form-buttons{
-                            grid-area:buttons;
-                            margin:20px 0;
-                            display:flex;
-                            gap:20px;
-
-                         }
+                        .form-buttons {
+                            grid-area: buttons;
+                            margin: 20px 0;
+                            display: flex;
+                            gap: 20px;
+                        }
                     }
-              }
-         }
+                }
+            }
+        }
     }
 }

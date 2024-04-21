@@ -1,0 +1,24 @@
+﻿@inject UserManager<UserEntity> UserManager
+
+@{
+    var user = await UserManager.GetUserAsync(User);
+}
+@if (user != null)
+{
+    <div class="profile-info">
+        <img src="~/images/@user.ProfileImageUrl" alt="@user.FirstName @user.LastName">
+        <form enctype="multipart/form-data" method="post" asp-action="ProfileImageUpload" asp-controller="Account">
+            <input id="fileUploader" type="file" name="file" hidden />
+            <label for="fileUploader" class="btn btn-circle btn-circle-sm"><i class="fa fa-refresh"></i></label>
+        </form>
+        <h5>@user.FirstName @user.LastName</h5>
+        <p>@user.Email</p>
+    </div>
+
+    <nav>
+        <a class="btn-theme-s" asp-controller="Account" asp-action="Details"><i class="fa-solid fa-gear"></i>Account Details</a>
+        <a class="btn-transparent" asp-controller="Auth" asp-action="SignOut"><i class="fa-solid fa-right-from-bracket"></i>Sign Out</a>
+
+
+    </nav>
+}

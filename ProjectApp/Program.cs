@@ -44,7 +44,7 @@ builder.Services.AddScoped<LightDarkSliderRepository>();
 builder.Services.AddScoped<ToolsRepository>();
 builder.Services.AddScoped<ToolsItemRepository>();
 
-builder.Services.AddScoped<AddressService>();
+builder.Services.AddScoped<AddressManager>();
 builder.Services.AddScoped<FeatureService>();
 builder.Services.AddScoped<LightDarkSliderService>();
 builder.Services.AddScoped<ToolsService>();

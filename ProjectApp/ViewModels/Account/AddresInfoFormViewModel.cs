@@ -1,12 +1,9 @@
-﻿using ProjectApp.Models.Components;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace ProjectApp.Models;
+namespace ProjectApp.ViewModels.Account;
 
-public class AccountDetailsAddressInfoModel
+public class AddresInfoFormViewModel
 {
-    public LinkViewModel Link { get; set; } = new LinkViewModel();
-
     [Display(Name = "Addres line 1", Prompt = "Enter your addresline", Order = 0)]
     [DataType(DataType.Text)]
     [Required(ErrorMessage = "Address is required")]
@@ -15,7 +12,7 @@ public class AccountDetailsAddressInfoModel
 
     [Display(Name = "Addres line 2", Prompt = "Enter your second address line", Order = 1)]
     [DataType(DataType.Text)]
-    public string? AddresLine2 { get; set; }
+    public string? AddressLine2 { get; set; }
 
 
     [Display(Name = "Postal code", Prompt = "Enter your postal code", Order = 2)]
@@ -27,5 +24,5 @@ public class AccountDetailsAddressInfoModel
     [Display(Name = "City", Prompt = "Enter your city", Order = 3)]
     [Required(ErrorMessage = "City is required")]
     [DataType(DataType.Text)]
-    public string City{ get; set; } = null!;
+    public string City { get; set; } = null!;
 }

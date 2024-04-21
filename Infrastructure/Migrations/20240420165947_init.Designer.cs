@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240408135644_AddLightDarkSliderEntity")]
-    partial class AddLightDarkSliderEntity
+    [Migration("20240420165947_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,11 +33,11 @@ namespace Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Addressline_1")
+                    b.Property<string>("AddressLine_1")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Addressline_2")
+                    b.Property<string>("AddressLine_2")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("City")
@@ -129,6 +129,56 @@ namespace Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("DarkLightSlider");
+                });
+
+            modelBuilder.Entity("Infrastructure.Entities.ToolsEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Ingress")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tool");
+                });
+
+            modelBuilder.Entity("Infrastructure.Entities.ToolsItemEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ToolId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ToolsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ToolsId");
+
+                    b.ToTable("ToolItems");
                 });
 
             modelBuilder.Entity("Infrastructure.Entities.UserEntity", b =>
@@ -372,6 +422,17 @@ namespace Infrastructure.Migrations
                     b.Navigation("Feature");
                 });
 
+            modelBuilder.Entity("Infrastructure.Entities.ToolsItemEntity", b =>
+                {
+                    b.HasOne("Infrastructure.Entities.ToolsEntity", "Tools")
+                        .WithMany("ToolItems")
+                        .HasForeignKey("ToolsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Tools");
+                });
+
             modelBuilder.Entity("Infrastructure.Entities.UserEntity", b =>
                 {
                     b.HasOne("Infrastructure.Entities.AddressEntity", "Address")
@@ -440,6 +501,11 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Infrastructure.Entities.FeatureEntity", b =>
                 {
                     b.Navigation("FeaturesItems");
+                });
+
+            modelBuilder.Entity("Infrastructure.Entities.ToolsEntity", b =>
+                {
+                    b.Navigation("ToolItems");
                 });
 #pragma warning restore 612, 618
         }
