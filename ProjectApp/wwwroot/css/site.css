@@ -558,12 +558,32 @@ header .container .btn-switch {
 }
 header .container .account-buttons {
   grid-area: buttons;
-  display: none;
-  gap: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 40px;
 }
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
   header .container .account-buttons {
-    display: flex;
+    margin-top: 10px;
+  }
+}
+header .container .account-buttons .profile-img {
+  width: 100px;
+  height: 100px;
+  margin-left: 15px;
+}
+header .container .account-buttons .profile-img img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+@media (min-width: 1200px) {
+  header .container .account-buttons .profile-img {
+    width: 40px;
+    height: 40px;
   }
 }
 header .container .btn-mobile {
