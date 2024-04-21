@@ -5,8 +5,9 @@
 @{
     ViewData["Title"] = $"{Model.ProfileInfo.FirstName} {Model.ProfileInfo.LastName}";
 }  
-<section id="account-details">
-    <div class="container">
+<div class="container">
+   <section id="account-details">
+    
         @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"]?.ToString()))
         {
             <div class="alert">
@@ -91,6 +92,6 @@
                 </form>
             </section>
 
-        </div>
-    </div>
-</section>
+        </div> 
+   </section>
+</div>
